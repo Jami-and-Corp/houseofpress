@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>House of Press — Hand-set letterpress, Bombay</title>
+<meta name="description" content="House of Press. Hand-set, hand-pressed letterpress business cards made in Mumbai. Made to be felt, not just seen.">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Oswald:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading" data-page="home">
+
+<div class="paper" aria-hidden="true">
+  <div class="paper__vignette"></div>
+</div>
+
+<div class="loader" id="loader">
+  <div class="loader__sheet">
+    <div class="loader__stage">
+      <img class="loader__wing loader__wing--top" src="img/logo-wing-top.png" alt="">
+      <img class="loader__word" src="img/logo-wordmark.png" alt="House of Press">
+      <img class="loader__wing loader__wing--bot" src="img/logo-wing-bottom.png" alt="">
+    </div>
+    <div class="loader__meter">
+      <div class="loader__rule"><i id="loaderRule"></i></div>
+      <div class="loader__readout">
+        <span class="loader__label" id="loaderLabel">Setting the forme</span>
+        <span class="loader__pct"><b id="loaderPct">0</b>%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pagefade" id="pagefade" aria-hidden="true"></div>
+
+<header class="topbar" id="topbar">
+  <a class="topbar__mark" href="index.html" aria-label="House of Press — home">
+    <img src="img/logo.png" alt="House of Press">
+  </a>
+  <nav class="topnav" aria-label="Pages">
+    <a href="portfolio.html">Portfolio</a>
+    <a href="history.html">History</a>
+    <a href="get-yours.html">Get Yours</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="topbar__meta">
+    <span class="topbar__place">Bombay</span>
+    <span class="topbar__sep"></span>
+    <a class="topbar__cta" href="get-yours.html">Get Yours</a>
+  </div>
+</header>
+
+<nav class="rail" id="rail" aria-label="Pages">
+  <ol class="rail__list">
+    <li><a href="index.html"     data-rail="home"><span class="rail__dot"></span><span class="rail__name">Home</span></a></li>
+    <li><a href="portfolio.html" data-rail="portfolio"><span class="rail__dot"></span><span class="rail__name">Portfolio</span></a></li>
+    <li><a href="history.html"   data-rail="history"><span class="rail__dot"></span><span class="rail__name">History</span></a></li>
+    <li><a href="get-yours.html" data-rail="getyours"><span class="rail__dot"></span><span class="rail__name">Get Yours</span></a></li>
+    <li><a href="contact.html"   data-rail="contact"><span class="rail__dot"></span><span class="rail__name">Contact</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ═════════════════════════════ HERO ═════════════════════════════ -->
+<section class="scene" id="home">
+  <div class="scene__pin">
+
+    <div class="hero__media" id="heroMedia">
+      <img id="heroImg" src="img/workshop.jpg" alt="A letterpress workshop with a House of Press broadside pinned to the wall">
+    </div>
+
+    <div class="hero__cue" id="heroCue">
+      <span class="hero__cueword">Scroll</span>
+      <span class="hero__cueline"></span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═════════════════════ THE WORK · drawn, then painted ═══════════ -->
+<section class="scene scene--process" id="process">
+  <div class="scene__pin">
+
+    <p class="process__eyebrow">The Work · Three Impressions</p>
+
+    <div class="step" data-step="0">
+      <div class="step__stage">
+        <figure class="step__art">
+          <img class="step__line" src="img/work-1-line.png" alt="" aria-hidden="true">
+          <img class="step__paint" src="img/work-1-cut.webp" alt="Applying ink to the raised type with a hand brayer">
+        </figure>
+      </div>
+      <div class="plaque-wrap">
+        <div class="plaque">
+          <p class="plaque__n">Work I</p>
+          <h2 class="plaque__t">Inking the<br>Printing Surface</h2>
+          <p class="plaque__b">Ink is applied to the press with a hand roller — a brayer. The
+          red-handled tool distributes it evenly across the raised type, a thin film and no
+          more. All of this happens before the paper ever meets the forme.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-step="1">
+      <div class="step__stage">
+        <figure class="step__art">
+          <img class="step__line" src="img/work-2-line.png" alt="" aria-hidden="true">
+          <img class="step__paint" src="img/work-2-cut.webp" alt="Positioning the paper and checking the printing setup">
+        </figure>
+      </div>
+      <div class="plaque-wrap">
+        <div class="plaque">
+          <p class="plaque__n">Work II</p>
+          <h2 class="plaque__t">Setting Up<br>the Print</h2>
+          <p class="plaque__b">The paper is positioned and the setup checked. The large circular
+          platen is the part that comes down onto the sheet and transfers the inked design.
+          Here the sheet is made ready for its impression.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-step="2">
+      <div class="step__stage">
+        <figure class="step__art">
+          <img class="step__line" src="img/work-3-line.png" alt="" aria-hidden="true">
+          <img class="step__paint" src="img/work-3-cut.webp" alt="Placing and aligning a sheet of paper into the press">
+        </figure>
+      </div>
+      <div class="plaque-wrap">
+        <div class="plaque">
+          <p class="plaque__n">Work III</p>
+          <h2 class="plaque__t">Feeding &amp;<br>Positioning the Paper</h2>
+          <p class="plaque__b">A sheet is placed and aligned into the press, squared against the
+          printing area so the design lands exactly where it should. The mechanism is worked by
+          hand, one sheet at a time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step__ticks" id="stepTicks">
+      <span class="step__tick is-on">I</span><span class="step__tick">II</span><span class="step__tick">III</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════ THE CHAPTERS ════════════════════════ -->
+<section class="chapters">
+  <div class="chapters__head reveal">
+    <p class="eyebrow">In four chapters</p>
+    <h2 class="subhead">Hand-set type, deep impressions,<br>textured cotton paper.</h2>
+  </div>
+
+  <ol class="chapterlist">
+    <li class="reveal"><a href="portfolio.html">
+      <span class="chapterlist__n">I</span>
+      <span class="chapterlist__body">
+        <span class="chapterlist__t">Portfolio</span>
+        <span class="chapterlist__d">Three movements of the hand, repeated until the last sheet matches the first.</span>
+      </span>
+      <span class="chapterlist__go" aria-hidden="true">&rarr;</span>
+    </a></li>
+    <li class="reveal"><a href="history.html">
+      <span class="chapterlist__n">II</span>
+      <span class="chapterlist__body">
+        <span class="chapterlist__t">History</span>
+        <span class="chapterlist__d">Ink, pressure, paper and patience — a craft six centuries deep.</span>
+      </span>
+      <span class="chapterlist__go" aria-hidden="true">&rarr;</span>
+    </a></li>
+    <li class="reveal"><a href="get-yours.html">
+      <span class="chapterlist__n">III</span>
+      <span class="chapterlist__body">
+        <span class="chapterlist__t">Get Yours</span>
+        <span class="chapterlist__d">Hand-pressed business cards from ₹2,500, delivered anywhere in India.</span>
+      </span>
+      <span class="chapterlist__go" aria-hidden="true">&rarr;</span>
+    </a></li>
+    <li class="reveal"><a href="contact.html">
+      <span class="chapterlist__n">IV</span>
+      <span class="chapterlist__body">
+        <span class="chapterlist__t">Contact</span>
+        <span class="chapterlist__d">Tell us what you would like pressed. We answer slowly, but we answer.</span>
+      </span>
+      <span class="chapterlist__go" aria-hidden="true">&rarr;</span>
+    </a></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="foot">
+  <img class="foot__mark" src="img/logo.png" alt="House of Press">
+  <p class="foot__line">Hand-set &amp; hand-pressed in Bombay.</p>
+  <nav class="foot__nav" aria-label="Pages">
+    <a href="portfolio.html">Portfolio</a>
+    <a href="history.html">History</a>
+    <a href="get-yours.html">Get Yours</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <p class="foot__fine">© <span id="year">2026</span> House of Press. Every sheet slightly different, on purpose.</p>
+</footer>
+
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

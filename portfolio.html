@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio — House of Press</title>
+<meta name="description" content="Inking the forme, setting the press, feeding the sheet — the whole of the House of Press process, in three plates.">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Oswald:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading" data-page="portfolio">
+
+<div class="paper" aria-hidden="true">
+  <div class="paper__vignette"></div>
+</div>
+
+<div class="loader" id="loader">
+  <div class="loader__sheet">
+    <div class="loader__stage">
+      <img class="loader__wing loader__wing--top" src="img/logo-wing-top.png" alt="">
+      <img class="loader__word" src="img/logo-wordmark.png" alt="House of Press">
+      <img class="loader__wing loader__wing--bot" src="img/logo-wing-bottom.png" alt="">
+    </div>
+    <div class="loader__meter">
+      <div class="loader__rule"><i id="loaderRule"></i></div>
+      <div class="loader__readout">
+        <span class="loader__label" id="loaderLabel">Setting the forme</span>
+        <span class="loader__pct"><b id="loaderPct">0</b>%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pagefade" id="pagefade" aria-hidden="true"></div>
+
+<header class="topbar" id="topbar">
+  <a class="topbar__mark" href="index.html" aria-label="House of Press — home">
+    <img src="img/logo.png" alt="House of Press">
+  </a>
+  <nav class="topnav" aria-label="Pages">
+    <a href="portfolio.html" aria-current="page">Portfolio</a>
+    <a href="history.html">History</a>
+    <a href="get-yours.html">Get Yours</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="topbar__meta">
+    <span class="topbar__place">Bombay</span>
+    <span class="topbar__sep"></span>
+    <a class="topbar__cta" href="get-yours.html">Get Yours</a>
+  </div>
+</header>
+
+<nav class="rail" id="rail" aria-label="Pages">
+  <ol class="rail__list">
+    <li><a href="index.html"     data-rail="home"><span class="rail__dot"></span><span class="rail__name">Home</span></a></li>
+    <li><a href="portfolio.html" data-rail="portfolio"><span class="rail__dot"></span><span class="rail__name">Portfolio</span></a></li>
+    <li><a href="history.html"   data-rail="history"><span class="rail__dot"></span><span class="rail__name">History</span></a></li>
+    <li><a href="get-yours.html" data-rail="getyours"><span class="rail__dot"></span><span class="rail__name">Get Yours</span></a></li>
+    <li><a href="contact.html"   data-rail="contact"><span class="rail__dot"></span><span class="rail__name">Contact</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section class="masthead masthead--tight">
+  <div class="chapter__head reveal">
+    <p class="eyebrow">Chapter One</p>
+    <h1 class="display">Portfolio</h1>
+    <p class="lede">Sheets pulled, proofs checked, details worth keeping. Scroll and the work
+    drifts past — near things quickly, far things slowly.</p>
+  </div>
+</section>
+
+<!-- the work, drifting past at its own speeds -->
+<section class="scene scene--field" id="field">
+  <div class="scene__pin">
+
+    <h2 class="field__title">All Work<sup>(12)</sup></h2>
+
+    <div class="field__stage" id="fieldStage">
+      <figure class="ftile" style="--x:3%;  --t:0vh;  --w:200px; --sp:1.10; --o:1">
+        <img src="img/field-01.webp" alt="Inking the press with a hand brayer" loading="lazy"></figure>
+      <figure class="ftile" style="--x:66%; --t:38vh;  --w:180px; --sp:0.82; --o:1">
+        <img src="img/field-02.webp" alt="Setting up an impression at the press" loading="lazy"></figure>
+      <figure class="ftile" style="--x:33%; --t:78vh;  --w:245px; --sp:1.32; --o:1">
+        <img src="img/field-03.webp" alt="Feeding a sheet into the platen" loading="lazy"></figure>
+      <figure class="ftile" style="--x:78%; --t:127vh;  --w:250px; --sp:0.95; --o:1">
+        <img src="img/field-04.webp" alt="The studio bench, ink and stock laid out" loading="lazy"></figure>
+      <figure class="ftile" style="--x:10%; --t:148vh; --w:235px; --sp:0.78; --o:.55">
+        <img src="img/field-05.webp" alt="Freshly pulled sheets on the drying rack" loading="lazy"></figure>
+      <figure class="ftile" style="--x:50%; --t:214vh; --w:275px; --sp:1.22; --o:1">
+        <img src="img/field-06.webp" alt="Working ink out across the plate" loading="lazy"></figure>
+      <figure class="ftile" style="--x:86%; --t:283vh; --w:185px; --sp:1.45; --o:1">
+        <img src="img/field-07.webp" alt="The brayer laid against the forme" loading="lazy"></figure>
+      <figure class="ftile" style="--x:1%;  --t:246vh; --w:205px; --sp:0.92; --o:1">
+        <img src="img/field-08.webp" alt="The platen closed against the chase" loading="lazy"></figure>
+      <figure class="ftile" style="--x:57%; --t:245vh; --w:250px; --sp:0.76; --o:.5">
+        <img src="img/field-09.webp" alt="Hands squaring a sheet on the feed board" loading="lazy"></figure>
+      <figure class="ftile" style="--x:26%; --t:386vh; --w:220px; --sp:1.28; --o:1">
+        <img src="img/field-10.webp" alt="Ink pots and rollers on the bench" loading="lazy"></figure>
+      <figure class="ftile" style="--x:72%; --t:361vh; --w:240px; --sp:1.02; --o:1">
+        <img src="img/field-11.webp" alt="The press standing in the workshop" loading="lazy"></figure>
+      <figure class="ftile" style="--x:6%;  --t:330vh; --w:210px; --sp:0.80; --o:.6">
+        <img src="img/field-12.webp" alt="Printed sheets stacked on the workshop table" loading="lazy"></figure>
+
+      <!-- second passes: the same work seen again, smaller and further off,
+           slotted into the gaps so the field never thins out -->
+      <figure class="ftile" style="--x:40%; --t:52vh;  --w:165px; --sp:1.05; --o:.55" aria-hidden="true">
+        <img src="img/field-02.webp" alt="" loading="lazy"></figure>
+      <figure class="ftile" style="--x:88%; --t:25vh;  --w:170px; --sp:0.88; --o:1" aria-hidden="true">
+        <img src="img/field-10.webp" alt="" loading="lazy"></figure>
+      <figure class="ftile" style="--x:15%; --t:150vh; --w:195px; --sp:1.15; --o:1" aria-hidden="true">
+        <img src="img/field-06.webp" alt="" loading="lazy"></figure>
+      <figure class="ftile" style="--x:62%; --t:197vh; --w:215px; --sp:0.90; --o:.5" aria-hidden="true">
+        <img src="img/field-01.webp" alt="" loading="lazy"></figure>
+      <figure class="ftile" style="--x:40%; --t:333vh; --w:175px; --sp:1.35; --o:1" aria-hidden="true">
+        <img src="img/field-11.webp" alt="" loading="lazy"></figure>
+      <figure class="ftile" style="--x:80%; --t:302vh; --w:190px; --sp:0.85; --o:.6" aria-hidden="true">
+        <img src="img/field-04.webp" alt="" loading="lazy"></figure>
+    </div>
+
+  </div>
+</section>
+
+<nav class="nextchapter reveal" aria-label="Next chapter">
+  <a href="history.html">
+    <span class="nextchapter__k">Chapter Two</span>
+    <span class="nextchapter__t">History <em>&rarr;</em></span>
+    <span class="nextchapter__d">Ink, pressure, paper and patience.</span>
+  </a>
+</nav>
+
+</main>
+
+<footer class="foot">
+  <img class="foot__mark" src="img/logo.png" alt="House of Press">
+  <p class="foot__line">Hand-set &amp; hand-pressed in Bombay.</p>
+  <nav class="foot__nav" aria-label="Pages">
+    <a href="index.html">Home</a>
+    <a href="history.html">History</a>
+    <a href="get-yours.html">Get Yours</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <p class="foot__fine">© <span id="year">2026</span> House of Press. Every sheet slightly different, on purpose.</p>
+</footer>
+
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

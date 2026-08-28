@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — House of Press</title>
+<meta name="description" content="Tell House of Press what you would like pressed. Studio in Mumbai, India. We answer slowly, but we answer.">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Oswald:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading" data-page="contact">
+
+<div class="paper" aria-hidden="true">
+  <div class="paper__vignette"></div>
+</div>
+
+<div class="loader" id="loader">
+  <div class="loader__sheet">
+    <div class="loader__stage">
+      <img class="loader__wing loader__wing--top" src="img/logo-wing-top.png" alt="">
+      <img class="loader__word" src="img/logo-wordmark.png" alt="House of Press">
+      <img class="loader__wing loader__wing--bot" src="img/logo-wing-bottom.png" alt="">
+    </div>
+    <div class="loader__meter">
+      <div class="loader__rule"><i id="loaderRule"></i></div>
+      <div class="loader__readout">
+        <span class="loader__label" id="loaderLabel">Setting the forme</span>
+        <span class="loader__pct"><b id="loaderPct">0</b>%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pagefade" id="pagefade" aria-hidden="true"></div>
+
+<header class="topbar" id="topbar">
+  <a class="topbar__mark" href="index.html" aria-label="House of Press — home">
+    <img src="img/logo.png" alt="House of Press">
+  </a>
+  <nav class="topnav" aria-label="Pages">
+    <a href="portfolio.html">Portfolio</a>
+    <a href="history.html">History</a>
+    <a href="get-yours.html">Get Yours</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+  </nav>
+  <div class="topbar__meta">
+    <span class="topbar__place">Bombay</span>
+    <span class="topbar__sep"></span>
+    <a class="topbar__cta" href="get-yours.html">Get Yours</a>
+  </div>
+</header>
+
+<nav class="rail" id="rail" aria-label="Pages">
+  <ol class="rail__list">
+    <li><a href="index.html"     data-rail="home"><span class="rail__dot"></span><span class="rail__name">Home</span></a></li>
+    <li><a href="portfolio.html" data-rail="portfolio"><span class="rail__dot"></span><span class="rail__name">Portfolio</span></a></li>
+    <li><a href="history.html"   data-rail="history"><span class="rail__dot"></span><span class="rail__name">History</span></a></li>
+    <li><a href="get-yours.html" data-rail="getyours"><span class="rail__dot"></span><span class="rail__name">Get Yours</span></a></li>
+    <li><a href="contact.html"   data-rail="contact"><span class="rail__dot"></span><span class="rail__name">Contact</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section class="masthead">
+  <div class="chapter__head reveal">
+    <p class="eyebrow">Chapter Four</p>
+    <h1 class="display">Contact Us</h1>
+    <p class="lede">Tell us what you would like pressed. We answer slowly, but we answer.</p>
+  </div>
+
+  <div class="contact">
+    <form class="form" id="contactForm" novalidate>
+      <div class="field">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="f-need">What do you need?</label>
+        <input id="f-need" name="need" type="text" placeholder="e.g. 200 business cards, two colours">
+      </div>
+      <div class="field">
+        <label for="f-msg">Tell us more</label>
+        <textarea id="f-msg" name="message" rows="5"></textarea>
+      </div>
+      <button class="btn btn--solid" type="submit">Send it to the studio <span>&rarr;</span></button>
+      <p class="form__note" id="formNote" role="status"></p>
+    </form>
+
+    <aside class="details">
+      <div class="details__row reveal">
+        <span class="details__k">Studio</span>
+        <span class="details__v">Mumbai, Maharashtra<br>India</span>
+      </div>
+      <div class="details__row reveal">
+        <span class="details__k">Email</span>
+        <span class="details__v"><a href="mailto:hello@houseofpress.in" data-placeholder="email">hello@houseofpress.in</a></span>
+      </div>
+      <div class="details__row reveal">
+        <span class="details__k">Shop</span>
+        <span class="details__v"><a href="https://houseofpress.in/" target="_blank" rel="noopener">houseofpress.in</a></span>
+      </div>
+      <div class="details__row reveal">
+        <span class="details__k">Instagram</span>
+        <span class="details__v"><a href="https://www.instagram.com/houseofpress.in/" target="_blank" rel="noopener" data-placeholder="instagram">@houseofpress.in</a></span>
+      </div>
+      <div class="details__row reveal">
+        <span class="details__k">Hours</span>
+        <span class="details__v">By appointment.<br>The press is loud; we may not hear the bell.</span>
+      </div>
+    </aside>
+  </div>
+
+  <p class="signoff reveal">In a hurry? <em>Not the place for you.</em></p>
+</section>
+
+<nav class="nextchapter reveal" aria-label="Back to the beginning">
+  <a href="index.html">
+    <span class="nextchapter__k">Back to</span>
+    <span class="nextchapter__t">The beginning <em>&rarr;</em></span>
+    <span class="nextchapter__d">Made to be felt, not just seen.</span>
+  </a>
+</nav>
+
+</main>
+
+<footer class="foot">
+  <img class="foot__mark" src="img/logo.png" alt="House of Press">
+  <p class="foot__line">Hand-set &amp; hand-pressed in Bombay.</p>
+  <nav class="foot__nav" aria-label="Pages">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="history.html">History</a>
+    <a href="get-yours.html">Get Yours</a>
+  </nav>
+  <p class="foot__fine">© <span id="year">2026</span> House of Press. Every sheet slightly different, on purpose.</p>
+</footer>
+
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
