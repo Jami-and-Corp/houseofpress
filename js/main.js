@@ -380,12 +380,74 @@
         });
       };
     });
+
+    /* Phones get the same idea without the pin. Each step plays once as it
+       comes into view: the drawing strokes on, the colour is laid over it.
+       Scrubbing a pinned scene through a thumb drag is miserable; a short
+       timeline that fires on entry is not. */
+    mm.add('(max-width: 820px)', function () {
+      var steps = $$('#process .step');
+      if (!steps.length) return;
+      var made = [];
+
+      steps.forEach(function (st) {
+        var line   = $('.step__line', st);
+        var paint  = $('.step__paint', st);
+        var plaque = $('.plaque', st);
+        if (!line || !paint) return;
+
+        var wipe = { v: -16 };
+        function stroke() {
+          var g = 'linear-gradient(to bottom, #000 0%, #000 ' + wipe.v +
+                  '%, rgba(0,0,0,0) ' + (wipe.v + 18) + '%)';
+          line.style.webkitMaskImage = g;
+          line.style.maskImage = g;
+        }
+        stroke();
+
+        // the stylesheet hides the drawing by default, so a phone with no JS
+        // still gets the finished painting rather than a blank frame
+        gsap.set(line,   { display: 'block', opacity: 1 });
+        gsap.set(paint,  { opacity: 0 });
+        gsap.set(plaque, { opacity: 0, y: 18 });
+
+        var tl = gsap.timeline({
+          scrollTrigger: { trigger: st, start: 'top 72%', once: true }
+        });
+        tl.to(wipe,   { v: 116, duration: 1.05, ease: 'power1.inOut', onUpdate: stroke }, 0)
+          .to(paint,  { opacity: 1, duration: .8,  ease: 'power2.out' }, .72)
+          .to(line,   { opacity: 0, duration: .55, ease: 'power2.out' }, .95)
+          .to(plaque, { opacity: 1, y: 0, duration: .7, ease: 'power2.out' }, 1.1);
+
+        made.push(tl);
+      });
+
+      return function () {
+        made.forEach(function (tl) {
+          if (tl.scrollTrigger) tl.scrollTrigger.kill();
+          tl.kill();
+        });
+        $$('#process .step__line').forEach(function (l) {
+          l.style.webkitMaskImage = ''; l.style.maskImage = '';
+          l.style.display = ''; l.style.opacity = '';
+        });
+        gsap.set('#process .step__paint, #process .plaque', { clearProps: 'all' });
+      };
+    });
   }
 
   /* ═══════════ PORTFOLIO · the work, drifting past ═════════════════ */
+  /* Runs at every width — the drift is the page. A phone gets a compressed
+     version of the same field (see --ts / --ws in the stylesheet), not a
+     static grid. */
   if ($('#field')) {
-    mm.add('(min-width: 821px)', function () {
-      var tiles = $$('#field .ftile');
+    /* Built once, mounted per breakpoint. The only difference is the scrub:
+       a phone scrolls on native momentum, and a long catch-up makes the tiles
+       feel detached from the thumb, so mobile gets a much shorter one. */
+    function buildField(scrub) {
+      var tiles = $$('#field .ftile').filter(function (t) {
+        return getComputedStyle(t).display !== 'none';
+      });
       if (!tiles.length) return;
 
       /* Every tile travels the same scroll distance, but multiplied by its own
@@ -399,7 +461,7 @@
       var tl = gsap.timeline({
         scrollTrigger: {
           trigger: '#field', start: 'top top', end: 'bottom bottom',
-          scrub: 1.1, invalidateOnRefresh: true
+          scrub: scrub, invalidateOnRefresh: true
         }
       });
 
@@ -415,7 +477,10 @@
         tl.kill();
         gsap.set(tiles, { clearProps: 'transform' });
       };
-    });
+    }
+
+    mm.add('(min-width: 821px)', function () { return buildField(1.1); });
+    mm.add('(max-width: 820px)', function () { return buildField(0.4); });
   }
 
   /* ════════════════ HISTORY · ANNOTATED PRESS PLATE ════════════════ */
@@ -479,6 +544,34 @@
         dImg.style.clipPath = '';
         gsap.set(ins, { clearProps: 'all' });
         gsap.set(lines, { clearProps: 'all' });
+      };
+    });
+
+    /* On a phone the callouts have no margin to live in, so the stylesheet
+       drops them — but the press should still be struck onto the page rather
+       than just sitting there. Same top-down reveal, played once on entry. */
+    mm.add('(max-width: 820px)', function () {
+      var dImg = $('#diagramImg');
+      var cap  = $('.diagram__cap');
+      if (!dImg) return;
+
+      var reveal = { v: 100 };
+      function paint() { dImg.style.clipPath = 'inset(0% 0% ' + reveal.v + '% 0%)'; }
+      paint();
+      gsap.set(cap, { opacity: 0, y: 12 });
+
+      var tl = gsap.timeline({
+        scrollTrigger: { trigger: '#diagram', start: 'top 68%', once: true }
+      });
+      tl.to(reveal, { v: 0, duration: 1.3, ease: 'power1.inOut', onUpdate: paint }, 0)
+        .fromTo(dImg, { y: -18 }, { y: 0, duration: 1.4, ease: 'power2.out' }, 0)
+        .to(cap, { opacity: 1, y: 0, duration: .6, ease: 'power2.out' }, .9);
+
+      return function () {
+        if (tl.scrollTrigger) tl.scrollTrigger.kill();
+        tl.kill();
+        dImg.style.clipPath = '';
+        gsap.set([dImg, cap], { clearProps: 'all' });
       };
     });
   }

@@ -55,7 +55,7 @@ body{
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
-body.is-loading{ overflow:hidden; height:100vh; }
+body.is-loading{ overflow:hidden; height:100vh; height:100svh; }
 
 img{ display:block; max-width:100%; }
 a{ color:inherit; }
@@ -260,7 +260,10 @@ body.over-media .rail__list a.is-on .rail__name{ color:#f2eee7; }
 /* ═══════════════════════ SCENE SCAFFOLD ════════════════════════════ */
 .scene{ position:relative; z-index:1; }
 .scene__pin{
-  position:sticky; top:0; height:100vh;
+  position:sticky; top:0;
+  /* svh, not vh: on a phone the address bar makes 100vh taller than what you
+     can see, so a pinned scene sits low and jumps when the bar hides */
+  height:100vh; height:100svh;
   overflow:hidden;
 }
 
@@ -574,10 +577,13 @@ body.over-media .rail__list a.is-on .rail__name{ color:#f2eee7; }
 .field__stage{ position:absolute; inset:0; z-index:2; }
 
 /* each tile carries its own place and its own rate of travel */
+/* --ts and --ws let a narrow screen compress the whole field without having to
+   restate every tile's inline position: the scene sets them once. */
 .ftile{
   position:absolute;
-  left:var(--x); top:var(--t);
-  width:var(--w);
+  left:var(--x);
+  top:calc(var(--t) * var(--ts, 1));
+  width:calc(var(--w) * var(--ws, 1));
   margin:0; opacity:var(--o,1);
   will-change:transform;
 }
@@ -920,22 +926,17 @@ body.over-media .rail__list a.is-on .rail__name{ color:#f2eee7; }
 @media (max-width:820px){
   #home{ height:380vh; }
 
-  /* the drifting field unpins into a plain two-column contact sheet */
-  .scene--field{ height:auto; }
-  .scene--field .scene__pin{
-    position:static; height:auto; overflow:visible;
-    padding:0 var(--gut) clamp(50px,8vh,90px);
+  /* The field keeps drifting on a phone — it is the point of the page. It is
+     just compressed: half the vertical spread, smaller tiles, and the six
+     second-pass duplicates dropped so there are twelve transforms, not eighteen. */
+  .scene--field{
+    height:270vh;
+    --ts:.5;    /* squeeze the tile start heights */
+    --ws:.72;   /* and their widths */
   }
-  .field__title{
-    position:static; transform:none; white-space:normal;
-    margin:0 0 clamp(24px,4vh,40px);
-  }
-  .field__stage{
-    position:static; display:grid;
-    grid-template-columns:1fr 1fr; gap:clamp(10px,3vw,20px);
-    align-items:start;
-  }
-  .ftile{ position:static; width:auto; opacity:1; }
+  .ftile[aria-hidden="true"]{ display:none; }
+  .field__title{ font-size:clamp(38px,13vw,60px); }
+  .ftile img{ box-shadow:0 8px 16px -12px rgba(70,60,44,.4); }
 
   /* the work sequence unpins and simply stacks */
   .scene--process{ height:auto; }
@@ -979,6 +980,33 @@ body.over-media .rail__list a.is-on .rail__name{ color:#f2eee7; }
   .chapterlist a{ grid-template-columns:34px 1fr auto; gap:14px; }
   .specs li{ flex-direction:column; gap:4px; }
   .specs span{ text-align:left; }
+}
+
+/* ══════════════════════════ TOUCH ══════════════════════════════════ */
+/* A finger is not a cursor. The nav type stays small because the design
+   wants it small, but the thing you actually hit is grown to ~44px with a
+   pseudo-element, so the bar's height is untouched. */
+@media (hover: none){
+  .topnav a, .foot__nav a, .details__v a{
+    position:relative;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .topnav a::after,
+  .foot__nav a::after{
+    content:''; position:absolute; inset:-18px -4px;
+  }
+  .details__v a::after{ content:''; position:absolute; inset:-12px -6px; }
+
+  /* hover states never fire on touch, so give the card its resting look
+     and stop the caption promising something a finger cannot do */
+  .bizcard__hint{ visibility:hidden; position:relative; }
+  .bizcard__hint::after{
+    content:'Pressed, not printed'; visibility:visible;
+    position:absolute; left:0; right:0; top:0;
+  }
+
+  a, button, summary{ -webkit-tap-highlight-color:rgba(163,48,31,.10); }
 }
 
 @media (prefers-reduced-motion:reduce){
