@@ -437,9 +437,9 @@
   }
 
   /* ══════════ HOME · the two-panel split, gently parallaxed ════════ */
-  /* The reference runs video in each half. There is no footage here, so the
-     images drift inside their panels instead — enough that the split reads
-     as alive rather than as two flat crops. */
+  /* Both halves drift inside their panels, so the split reads as alive rather
+     than as two flat crops. The work half runs the studio's own reel now; the
+     drift is applied to the panel, so it moves footage and plate alike. */
   if ($('.split') && !REDUCED) {
     $$('.split__media').forEach(function (m, i) {
       gsap.fromTo(m,
@@ -452,6 +452,32 @@
           }
         });
     });
+  }
+
+  /* The reel is 1.4 MB and sits well below the fold, so the page does not
+     fetch it. It loads a viewport ahead of arriving, runs only while its own
+     panel is on screen, and under reduced-motion never loads at all — there
+     the poster frame is the whole panel. */
+  var workVid = $('#workVid');
+  if (workVid && !REDUCED) {
+    var playWork = function () {
+      var p = workVid.play();
+      if (p && p.catch) p.catch(function () {});   /* a refused autoplay is fine */
+    };
+    if ('IntersectionObserver' in window) {
+      var reelLoaded = false;
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            if (!reelLoaded) { reelLoaded = true; workVid.src = workVid.dataset.src; }
+            playWork();
+          } else if (reelLoaded) { workVid.pause(); }
+        });
+      }, { rootMargin: '100% 0px' }).observe(workVid);
+    } else {
+      workVid.src = workVid.dataset.src;
+      playWork();
+    }
   }
 
   /* ═══════════ PORTFOLIO · the work, drifting past ═════════════════ */

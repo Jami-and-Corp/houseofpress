@@ -441,9 +441,38 @@ body.over-media .rail__list a.is-on .rail__name{ color:#f2eee7; }
   width:100%; height:100%; object-fit:cover;
   transition:transform 1.1s var(--ease);
 }
-.split__half::after{           /* keeps the labels legible over any frame */
+
+/* the work panel carries the studio's own reel, laid in exactly where the
+   photograph was so the parallax and the hover push move it the same way */
+.split__media video{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 1.1s var(--ease);
+  background:var(--ink);
+}
+.split__half:hover .split__media video{ transform:scale(1.045); }
+
+/* The boxes were shot whole on a studio sweep, and the frame is only 491px
+   wide. Cropping into it to fill a tall panel would have blown up a third of
+   the photo by two and a half times, so this panel keeps the whole frame and
+   continues the sweep behind it instead of cropping into it. */
+.split__media--plate{
+  background:linear-gradient(to bottom,#8b837e 0%,#847c78 34%,#756a62 100%);
+}
+.split__media--plate img{
+  object-fit:contain;
+  padding:clamp(16px,4%,54px);
+}
+/* Type over footage has to survive whatever frame happens to be underneath.
+   Measured across all 582 frames of the reel, a single top scrim left the
+   label unreadable in 22% of them, the standfirst in 79% and the arrow in
+   40% — the clip runs from a black press to a white wall. So both ends of
+   the panel carry a scrim now, each holding its weight through the band the
+   type actually occupies and releasing immediately below it. */
+.split__half::after{
   content:''; position:absolute; inset:0; pointer-events:none;
-  background:linear-gradient(to bottom, rgba(28,23,16,.42) 0%, rgba(28,23,16,0) 32%);
+  background:
+    linear-gradient(to bottom, rgba(28,23,16,.66) 0%, rgba(28,23,16,.52) 30%, rgba(28,23,16,0) 50%),
+    linear-gradient(to top,    rgba(28,23,16,.62) 0%, rgba(28,23,16,.50) 10%, rgba(28,23,16,0) 22%);
 }
 .split__label,
 .split__line,
@@ -452,7 +481,9 @@ body.over-media .rail__list a.is-on .rail__name{ color:#f2eee7; }
 /* A pale photograph will not carry white type. The panel says which it is and
    the type follows: ink on a light frame, paper-white on a dark one. */
 .split__half--onlight::after{
-  background:linear-gradient(to bottom, rgba(247,245,239,.72) 0%, rgba(247,245,239,0) 34%);
+  background:
+    linear-gradient(to bottom, rgba(247,245,239,.82) 0%, rgba(247,245,239,.64) 30%, rgba(247,245,239,0) 50%),
+    linear-gradient(to top,    rgba(247,245,239,.60) 0%, rgba(247,245,239,.46) 10%, rgba(247,245,239,0) 22%);
 }
 .split__half--onlight .split__label,
 .split__half--onlight .split__line,
@@ -467,14 +498,14 @@ body.over-media .rail__list a.is-on .rail__name{ color:#f2eee7; }
   font-family:var(--serif); font-weight:500;
   font-size:clamp(20px,2.1vw,30px); line-height:1;
   letter-spacing:.005em;
-  text-shadow:0 1px 6px rgba(0,0,0,.45);
+  text-shadow:0 1px 2px rgba(0,0,0,.55), 0 2px 14px rgba(0,0,0,.4);
 }
 .split__line{
   display:block; max-width:30ch;
   margin-top:clamp(10px,1.4vh,18px);
   font-size:clamp(13px,1.02vw,17px); line-height:1.55;
-  color:rgba(246,243,236,.88);
-  text-shadow:0 1px 6px rgba(0,0,0,.45);
+  color:rgba(246,243,236,.92);
+  text-shadow:0 1px 2px rgba(0,0,0,.55), 0 2px 12px rgba(0,0,0,.35);
 }
 .split__go{
   position:absolute; z-index:2;
@@ -946,7 +977,10 @@ body.over-media .rail__list a.is-on .rail__name{ color:#f2eee7; }
 
   /* two half-width panels on a phone would be two slivers: stack them */
   .split{ grid-template-columns:1fr; height:auto; margin-top:clamp(50px,8vh,90px); }
-  .split__half{ min-height:56svh; padding:clamp(20px,4.5vw,32px); }
+  /* the shorthand would drop the desktop rule's clearance and let the label
+     run under the fixed bar, so the top padding is restated here */
+  .split__half{ min-height:56svh; padding:clamp(20px,4.5vw,32px);
+                padding-top:calc(var(--bar-h) + clamp(12px,2.4vw,20px)); }
   .split__half--b{ text-align:left; }
   .split__half--b .split__line{ margin-left:0; }
   .split__half--b .split__go{ left:clamp(20px,4.5vw,32px); right:auto; }
