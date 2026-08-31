@@ -436,6 +436,24 @@
     });
   }
 
+  /* ══════════ HOME · the two-panel split, gently parallaxed ════════ */
+  /* The reference runs video in each half. There is no footage here, so the
+     images drift inside their panels instead — enough that the split reads
+     as alive rather than as two flat crops. */
+  if ($('.split') && !REDUCED) {
+    $$('.split__media').forEach(function (m, i) {
+      gsap.fromTo(m,
+        { yPercent: -5 },
+        {
+          yPercent: 5, ease: 'none',
+          scrollTrigger: {
+            trigger: '.split', start: 'top bottom', end: 'bottom top',
+            scrub: 0.6, invalidateOnRefresh: true
+          }
+        });
+    });
+  }
+
   /* ═══════════ PORTFOLIO · the work, drifting past ═════════════════ */
   /* Runs at every width — the drift is the page. A phone gets a compressed
      version of the same field (see --ts / --ws in the stylesheet), not a
